@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://1wetgms0g71w"]
+
+[ext_resource type="Texture2D" uid="uid://d2xj03i74eesn" path="res://Sprites/Очередное/настройки/настройки/фон.png" id="1_ka4cx"]
+[ext_resource type="Script" path="res://loading.gd" id="2_4g03j"]
+[ext_resource type="Texture2D" uid="uid://djmc4cjtwb84e" path="res://Sprites/Очередное/робот/робот/2.png" id="2_edwpb"]
+[ext_resource type="Texture2D" uid="uid://dbp7ok12lkyb1" path="res://Sprites/Очередное/робот/робот/1.png" id="3_y7axo"]
+[ext_resource type="Texture2D" uid="uid://c8po5dkasghhb" path="res://Sprites/Очередное/робот/робот/3.png" id="4_eydw2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_titgm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_edwpb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_y7axo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_eydw2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_y7axo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="Loading" type="TextureRect"]
+offset_top = -24.0
+offset_right = 1089.0
+offset_bottom = 1935.0
+scale = Vector2(0.661226, 0.563602)
+texture = ExtResource("1_ka4cx")
+script = ExtResource("2_4g03j")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 193.58
+offset_top = 1263.3
+offset_right = 931.58
+offset_bottom = 1336.3
+theme_override_font_sizes/font_size = 50
+step = 1.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(556.542, 951.027)
+scale = Vector2(1.33167, 1.1362)
+sprite_frames = SubResource("SpriteFrames_titgm")

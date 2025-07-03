@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=3 uid="uid://ca0una1elyp0i"]
+
+[ext_resource type="Script" path="res://Enemy.gd" id="1_cid7n"]
+[ext_resource type="Texture2D" uid="uid://c05y8xgeak6v7" path="res://Sprites/robot_4.png" id="2_02swv"]
+[ext_resource type="Texture2D" uid="uid://jp6rd4s2y2s5" path="res://Sprites/robot_1.png" id="3_56s6u"]
+[ext_resource type="Texture2D" uid="uid://bnuy434seeal5" path="res://Sprites/robot_3.png" id="4_qn230"]
+[ext_resource type="Texture2D" uid="uid://cm8luuu6phiaw" path="res://Sprites/robot_2.png" id="5_gu12e"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4p82x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_02swv")
+}],
+"loop": true,
+"name": &"mob_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_56s6u")
+}],
+"loop": true,
+"name": &"mob_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_qn230")
+}],
+"loop": true,
+"name": &"mob_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_gu12e")
+}],
+"loop": true,
+"name": &"mob_up",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mgdxq"]
+radius = 20.0
+height = 40.0
+
+[node name="Enemy" type="RigidBody2D" groups=["mobs"]]
+z_index = 2
+position = Vector2(0, 16)
+collision_layer = 2
+collision_mask = 3
+gravity_scale = 0.0
+script = ExtResource("1_cid7n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_4p82x")
+animation = &"mob_left"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -15)
+shape = SubResource("CapsuleShape2D_mgdxq")

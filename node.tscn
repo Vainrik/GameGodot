@@ -1,0 +1,122 @@
+[gd_scene load_steps=20 format=3 uid="uid://fgspja6cfgr6"]
+
+[ext_resource type="Script" path="res://node.gd" id="1_bvwj1"]
+[ext_resource type="PackedScene" uid="uid://dd8hhvxo8u7cw" path="res://map.tscn" id="1_wdxd4"]
+[ext_resource type="PackedScene" uid="uid://bta3igutaga2r" path="res://player.tscn" id="2_tvbbm"]
+[ext_resource type="PackedScene" uid="uid://ca0una1elyp0i" path="res://enemy.tscn" id="2_wen6m"]
+[ext_resource type="PackedScene" uid="uid://bqnf8xpvdmfr3" path="res://plazm.tscn" id="5_msywf"]
+[ext_resource type="PackedScene" uid="uid://c1g4iyt0i0xpl" path="res://luch.tscn" id="6_dxtyh"]
+[ext_resource type="PackedScene" uid="uid://c3px2lqq50set" path="res://shar.tscn" id="7_q167p"]
+[ext_resource type="PackedScene" uid="uid://buu3i4ateaonm" path="res://bullet_shar.tscn" id="8_ff1ym"]
+[ext_resource type="Script" path="res://Global.gd" id="9_xwsuy"]
+[ext_resource type="PackedScene" uid="uid://dydq6s8x020qu" path="res://hud.tscn" id="10_0hgq2"]
+[ext_resource type="PackedScene" uid="uid://15n1yiu8wf3y" path="res://enemy_2.tscn" id="11_ruhvv"]
+[ext_resource type="PackedScene" uid="uid://cth60civjvij5" path="res://bazuka.tscn" id="11_v0d0t"]
+[ext_resource type="PackedScene" uid="uid://do7emo4fu1s3i" path="res://shield.tscn" id="12_u4nr6"]
+[ext_resource type="PackedScene" uid="uid://b6badwdlyfq1n" path="res://joystick.tscn" id="14_2ohrm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2gx8s"]
+size = Vector2(10128, 59.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_giwfx"]
+size = Vector2(10128, 59.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bf6f4"]
+size = Vector2(94, 10010)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rpn7g"]
+size = Vector2(94, 10010)
+
+[sub_resource type="Curve2D" id="Curve2D_wisu6"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -5024, -4856, 0, 0, 0, 0, 4792, -4816, 0, 0, 0, 0, 4768, 4872, 0, 0, 0, 0, -4984, 4864, 0, 0, 0, 0, -5024, -4856)
+}
+point_count = 5
+
+[node name="node" type="Node"]
+script = ExtResource("1_bvwj1")
+mob_scene = ExtResource("2_wen6m")
+mob2_scene = ExtResource("11_ruhvv")
+
+[node name="HUD" parent="." instance=ExtResource("10_0hgq2")]
+
+[node name="Map" parent="." instance=ExtResource("1_wdxd4")]
+position = Vector2(-146, 32)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-85, -4991.25)
+shape = SubResource("RectangleShape2D_2gx8s")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-93, 5044)
+shape = SubResource("RectangleShape2D_giwfx")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(4961, 41)
+shape = SubResource("RectangleShape2D_bf6f4")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-5143, -13)
+shape = SubResource("RectangleShape2D_rpn7g")
+
+[node name="Player" parent="." instance=ExtResource("2_tvbbm")]
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
+remote_path = NodePath("../../Camera2D")
+
+[node name="Plazm" parent="Player" instance=ExtResource("5_msywf")]
+
+[node name="Luch" parent="Player" instance=ExtResource("6_dxtyh")]
+
+[node name="shar" parent="Player" instance=ExtResource("7_q167p")]
+shar = ExtResource("8_ff1ym")
+
+[node name="Bazuka" parent="Player" instance=ExtResource("11_v0d0t")]
+
+[node name="Shield" parent="Player" instance=ExtResource("12_u4nr6")]
+
+[node name="joystick" parent="Player" instance=ExtResource("14_2ohrm")]
+position = Vector2(0, 437)
+scale = Vector2(1.65344, 1.50827)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.75, 0.75)
+limit_left = -5100
+limit_top = -4950
+limit_right = 4900
+limit_bottom = 5000
+editor_draw_limits = true
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="EnemyTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="PathEnemy" type="Path2D" parent="."]
+curve = SubResource("Curve2D_wisu6")
+
+[node name="SpawnEnemy" type="PathFollow2D" parent="PathEnemy"]
+position = Vector2(-5024, -4856)
+rotation = 0.00407496
+
+[node name="Enemy" parent="." instance=ExtResource("2_wen6m")]
+position = Vector2(4640, 648)
+
+[node name="Global" type="Node2D" parent="."]
+process_mode = 3
+script = ExtResource("9_xwsuy")
+
+[node name="TimerMob2" type="Timer" parent="."]
+wait_time = 8.0
+autostart = true
+
+[node name="Enemy2" parent="." instance=ExtResource("11_ruhvv")]
+position = Vector2(4613, -1081)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]
+[connection signal="timeout" from="TimerMob2" to="." method="_on_timer_mob_2_timeout"]

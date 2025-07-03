@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://bta3igutaga2r"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_8ls55"]
+[ext_resource type="Texture2D" uid="uid://c8go0sckmpgo2" path="res://Sprites/mc.png" id="2_h124y"]
+[ext_resource type="Texture2D" uid="uid://c6k3ah1s4vuao" path="res://Sprites/white.png" id="3_2nn6v"]
+[ext_resource type="Texture2D" uid="uid://bvvbjtm8w5v43" path="res://Sprites/red.png" id="4_agdml"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cos48"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_h124y")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8ymmt"]
+radius = 23.0
+height = 86.0
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 11
+script = ExtResource("1_8ls55")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-0.999992, 7.62939e-06)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_cos48")
+animation = &"walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_8ymmt")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_left = -21.0
+offset_top = 49.0
+offset_right = 18.0
+offset_bottom = 62.0
+scale = Vector2(1.08336, 0.353017)
+value = 100.0
+texture_under = ExtResource("3_2nn6v")
+texture_progress = ExtResource("4_agdml")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true

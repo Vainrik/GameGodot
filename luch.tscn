@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1g4iyt0i0xpl"]
+
+[ext_resource type="Script" path="res://Luch.gd" id="1_jlnks"]
+[ext_resource type="PackedScene" uid="uid://b0ppi3uatjn5o" path="res://bullet_luch.tscn" id="2_tqius"]
+
+[node name="Luch" type="Node2D"]
+script = ExtResource("1_jlnks")
+bullet_scene = ExtResource("2_tqius")
+
+[node name="FireTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="timeout" from="FireTimer" to="." method="_on_fire_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]

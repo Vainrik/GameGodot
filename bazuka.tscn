@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cth60civjvij5"]
+
+[ext_resource type="Script" path="res://Bazuka.gd" id="1_c0t0k"]
+[ext_resource type="PackedScene" uid="uid://c2mxs6qh4qx1m" path="res://bullet_bazuka.tscn" id="2_dpxg5"]
+
+[node name="Bazuka" type="Node2D"]
+script = ExtResource("1_c0t0k")
+bullet_scene = ExtResource("2_dpxg5")
+fire_rate = 2
+
+[node name="FireTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="FireTimer" to="." method="_on_fire_timer_timeout"]

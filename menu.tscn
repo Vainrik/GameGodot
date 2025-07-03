@@ -1,0 +1,167 @@
+[gd_scene load_steps=15 format=3 uid="uid://bh76v6ld0ixck"]
+
+[ext_resource type="Script" path="res://menu.gd" id="1_8tbjh"]
+[ext_resource type="Texture2D" uid="uid://cgjhp8t63kgux" path="res://Sprites/кнопки/играть_с.png" id="2_8aj1m"]
+[ext_resource type="Texture2D" uid="uid://b2hqhvkfb4tax" path="res://Sprites/spells/bg_menyu.png" id="2_bg3sc"]
+[ext_resource type="Texture2D" uid="uid://gel0g5k2okoh" path="res://Sprites/кнопки/играть_а.png" id="3_531t5"]
+[ext_resource type="Texture2D" uid="uid://laic403a5xpb" path="res://Sprites/кнопки/выход_с.png" id="4_7aknt"]
+[ext_resource type="Texture2D" uid="uid://ej3krhe7qah1" path="res://Sprites/кнопки/выход_а.png" id="5_qto78"]
+[ext_resource type="Texture2D" uid="uid://13ys4nuwf7vo" path="res://Sprites/кнопки/настройки_с.png" id="7_53uu0"]
+[ext_resource type="FontFile" uid="uid://drn6co2xgcno1" path="res://Sprites/Myriad Pro/MYRIADPRO-REGULAR.OTF" id="7_qrrv7"]
+[ext_resource type="Texture2D" uid="uid://brxmej7ibvpg2" path="res://Sprites/кнопки/настройки_а.png" id="8_tl8rf"]
+[ext_resource type="Texture2D" uid="uid://d2xj03i74eesn" path="res://Sprites/Очередное/настройки/настройки/фон.png" id="9_1uqam"]
+[ext_resource type="Texture2D" uid="uid://bq0fti2wyqn4g" path="res://Sprites/Очередное/настройки/настройки/окно.png" id="10_1excc"]
+[ext_resource type="Texture2D" uid="uid://djngofbyvcrd1" path="res://Sprites/Очередное/настройки/настройки/ползунок.png" id="12_aublp"]
+[ext_resource type="AudioStream" uid="uid://b3nmwukglgoof" path="res://Sprites/Очередное/музыка/the_qemists_-_stompbox_(zaycev.net).mp3" id="13_t14ie"]
+[ext_resource type="Script" path="res://Audio.gd" id="14_ld70t"]
+
+[node name="menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8tbjh")
+
+[node name="menu1" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="menu1"]
+layout_mode = 0
+offset_top = -24.0
+offset_right = 720.0
+offset_bottom = 1056.0
+texture = ExtResource("2_bg3sc")
+expand_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="menu1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.022
+anchor_bottom = -0.022
+offset_left = 136.0
+offset_top = 152.88
+offset_right = 739.0
+offset_bottom = 341.88
+scale = Vector2(0.742908, 0.667996)
+
+[node name="TextureButton" type="TextureButton" parent="menu1/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_8aj1m")
+texture_pressed = ExtResource("3_531t5")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="menu1"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 560.0
+offset_right = 739.0
+offset_bottom = 749.0
+scale = Vector2(0.739967, 0.668108)
+
+[node name="OutButtun" type="TextureButton" parent="menu1/VBoxContainer2"]
+layout_mode = 2
+texture_normal = ExtResource("4_7aknt")
+texture_pressed = ExtResource("5_qto78")
+
+[node name="ButSet" type="TextureButton" parent="menu1"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 352.0
+offset_right = 739.0
+offset_bottom = 541.0
+scale = Vector2(0.737501, 0.673306)
+texture_normal = ExtResource("7_53uu0")
+texture_pressed = ExtResource("8_tl8rf")
+
+[node name="Setting" type="TextureRect" parent="."]
+process_mode = 2
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.664587, 0.546581)
+texture = ExtResource("9_1uqam")
+
+[node name="fon" type="TextureRect" parent="Setting"]
+layout_mode = 0
+offset_left = 132.413
+offset_top = 190.274
+offset_right = 1104.41
+offset_bottom = 1127.27
+scale = Vector2(0.860127, 1.17749)
+texture = ExtResource("10_1excc")
+
+[node name="But" type="TextureButton" parent="Setting"]
+layout_mode = 0
+offset_left = 264.826
+offset_top = 936.733
+offset_right = 867.826
+offset_bottom = 1125.73
+texture_normal = ExtResource("4_7aknt")
+texture_pressed = ExtResource("5_qto78")
+
+[node name="Label" type="Label" parent="Setting"]
+layout_mode = 0
+offset_left = 421.314
+offset_top = 248.82
+offset_right = 896.314
+offset_bottom = 342.82
+scale = Vector2(0.646988, 0.738936)
+theme_override_colors/font_color = Color(0.643137, 0.956863, 1, 1)
+theme_override_fonts/font = ExtResource("7_qrrv7")
+theme_override_font_sizes/font_size = 90
+text = "Настройки"
+
+[node name="HSlider" type="HSlider" parent="Setting"]
+layout_mode = 0
+offset_left = 288.901
+offset_top = 600.094
+offset_right = 639.901
+offset_bottom = 678.094
+scale = Vector2(1.51092, 1.14103)
+theme_override_icons/grabber = ExtResource("12_aublp")
+theme_override_icons/grabber_highlight = ExtResource("12_aublp")
+min_value = -100.0
+max_value = 0.0
+
+[node name="Label2" type="Label" parent="Setting"]
+layout_mode = 0
+offset_left = 288.901
+offset_top = 508.617
+offset_right = 763.901
+offset_bottom = 602.617
+scale = Vector2(0.646988, 0.738936)
+theme_override_colors/font_color = Color(0.643137, 0.956863, 1, 1)
+theme_override_fonts/font = ExtResource("7_qrrv7")
+theme_override_font_sizes/font_size = 90
+text = "Звук"
+
+[node name="Label3" type="Label" parent="Setting"]
+layout_mode = 0
+offset_left = 728.272
+offset_top = 508.617
+offset_right = 1203.27
+offset_bottom = 602.617
+scale = Vector2(0.646988, 0.738936)
+theme_override_colors/font_color = Color(0.643137, 0.956863, 1, 1)
+theme_override_fonts/font = ExtResource("7_qrrv7")
+theme_override_font_sizes/font_size = 90
+text = "100"
+
+[node name="Audio" type="AudioStreamPlayer" parent="Setting"]
+process_mode = 3
+stream = ExtResource("13_t14ie")
+autoplay = true
+script = ExtResource("14_ld70t")
+
+[connection signal="pressed" from="menu1/VBoxContainer/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="menu1/VBoxContainer2/OutButtun" to="." method="_on_out_buttun_pressed"]
+[connection signal="pressed" from="menu1/ButSet" to="." method="_on_but_set_pressed"]
+[connection signal="pressed" from="Setting/But" to="." method="_on_but_pressed"]
+[connection signal="value_changed" from="Setting/HSlider" to="Setting/Audio" method="_on_h_slider_value_changed"]

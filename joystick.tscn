@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6badwdlyfq1n"]
+
+[ext_resource type="Script" path="res://joystick.gd" id="1_k5rtt"]
+[ext_resource type="Texture2D" uid="uid://dwvct383pic67" path="res://Sprites/Очередное/джойстик/joystick.png" id="2_2o3js"]
+[ext_resource type="Texture2D" uid="uid://1kh4fg57ft8c" path="res://Sprites/Очередное/джойстик/stick.png" id="3_635cu"]
+[ext_resource type="Script" path="res://stick.gd" id="4_05jqm"]
+
+[node name="joystick" type="Node2D"]
+z_index = 1
+position = Vector2(366, 887)
+scale = Vector2(1.801, 1.7067)
+script = ExtResource("1_k5rtt")
+
+[node name="joy" type="Sprite2D" parent="."]
+texture = ExtResource("2_2o3js")
+
+[node name="stick" type="Sprite2D" parent="."]
+texture = ExtResource("3_635cu")
+script = ExtResource("4_05jqm")
+
+[node name="Button" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+
+[connection signal="button_down" from="Button" to="stick" method="_on_button_button_down"]
+[connection signal="button_up" from="Button" to="stick" method="_on_button_button_up"]

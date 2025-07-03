@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6yjujgbqgxtv"]
+
+[ext_resource type="Script" path="res://BulletPlazm.gd" id="1_cr5xm"]
+[ext_resource type="Texture2D" uid="uid://cjdtpnrsqyl24" path="res://Sprites/sprites_-_lasers_bullets_1_66v2.5/Laser Sprites/01.png" id="2_y6f30"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_daagl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_y6f30")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_quh6e"]
+radius = 5.0
+height = 10.0
+
+[node name="BulletPlazm" type="RigidBody2D"]
+z_index = 3
+collision_layer = 4
+collision_mask = 2
+gravity_scale = 0.0
+script = ExtResource("1_cr5xm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1.90735e-06, 0)
+scale = Vector2(0.398016, 0.397)
+sprite_frames = SubResource("SpriteFrames_daagl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_quh6e")

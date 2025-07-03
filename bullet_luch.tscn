@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://b0ppi3uatjn5o"]
+
+[ext_resource type="Texture2D" uid="uid://iqoohk26rkx8" path="res://Sprites/Безымянный.png" id="1_bpwoj"]
+[ext_resource type="Script" path="res://bullet_luch.gd" id="1_ekj4j"]
+[ext_resource type="Texture2D" uid="uid://0gv5rd6m3sdi" path="res://Sprites/Очередное/плазма/плазма/1.png" id="3_224p8"]
+[ext_resource type="Texture2D" uid="uid://se1m5hjwbghu" path="res://Sprites/Очередное/плазма/плазма/2.png" id="4_3j5ya"]
+[ext_resource type="Texture2D" uid="uid://cd0idrwg0n0nm" path="res://Sprites/Очередное/плазма/плазма/3.png" id="5_he2y0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xk2aa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_bpwoj")
+}],
+"loop": true,
+"name": &"luch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_224p8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3j5ya")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_he2y0")
+}],
+"loop": true,
+"name": &"luch2",
+"speed": 30.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vnt2g"]
+size = Vector2(550, 4)
+
+[node name="BulletLuch" type="RigidBody2D"]
+z_index = 3
+collision_layer = 4
+collision_mask = 2
+gravity_scale = 0.0
+script = ExtResource("1_ekj4j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(549, 4)
+scale = Vector2(8.16139, 0.25)
+sprite_frames = SubResource("SpriteFrames_xk2aa")
+animation = &"luch2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(559, 3)
+shape = SubResource("RectangleShape2D_vnt2g")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+autostart = true

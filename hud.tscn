@@ -1,0 +1,274 @@
+[gd_scene load_steps=23 format=3 uid="uid://dydq6s8x020qu"]
+
+[ext_resource type="Script" path="res://hud.gd" id="1_e15qs"]
+[ext_resource type="Texture2D" uid="uid://b2tmlmi8hf5oc" path="res://Sprites/green.png" id="1_tuicy"]
+[ext_resource type="Texture2D" uid="uid://d14pxtae6hxvc" path="res://Sprites/pause.png" id="2_jr385"]
+[ext_resource type="Texture2D" uid="uid://byddsjimoyh2d" path="res://Sprites/spells/окно.png" id="4_iw5ra"]
+[ext_resource type="Texture2D" uid="uid://cgjhp8t63kgux" path="res://Sprites/кнопки/играть_с.png" id="5_6d86w"]
+[ext_resource type="Texture2D" uid="uid://c5d1xpt6mwf67" path="res://Sprites/spells/молния.png" id="5_kl8wp"]
+[ext_resource type="Texture2D" uid="uid://cwlcvu7f65dty" path="res://Sprites/spells/пушка нажатая.png" id="6_6qx7a"]
+[ext_resource type="Texture2D" uid="uid://gel0g5k2okoh" path="res://Sprites/кнопки/играть_а.png" id="6_kd2mu"]
+[ext_resource type="Texture2D" uid="uid://laic403a5xpb" path="res://Sprites/кнопки/выход_с.png" id="7_c1bn8"]
+[ext_resource type="Texture2D" uid="uid://b8bxnyk0sukhn" path="res://Sprites/Очередное/пауза/пауза/фон.png" id="7_syjua"]
+[ext_resource type="Texture2D" uid="uid://ej3krhe7qah1" path="res://Sprites/кнопки/выход_а.png" id="8_aricy"]
+[ext_resource type="Texture2D" uid="uid://df5gola3karxl" path="res://Sprites/Очередное/результат/результат/окно.png" id="12_qkqk2"]
+[ext_resource type="Texture2D" uid="uid://13ys4nuwf7vo" path="res://Sprites/кнопки/настройки_с.png" id="12_vlcqv"]
+[ext_resource type="Texture2D" uid="uid://brxmej7ibvpg2" path="res://Sprites/кнопки/настройки_а.png" id="13_4wo8v"]
+[ext_resource type="Texture2D" uid="uid://duqu4kyor63vx" path="res://Sprites/Очередное/результат/результат/череп.png" id="13_imbgm"]
+[ext_resource type="Texture2D" uid="uid://bs2o5k6mjfoi4" path="res://Sprites/Очередное/результат/результат/время.png" id="14_r1dpq"]
+[ext_resource type="FontFile" uid="uid://drn6co2xgcno1" path="res://Sprites/Myriad Pro/MYRIADPRO-REGULAR.OTF" id="15_qsirs"]
+[ext_resource type="Texture2D" uid="uid://d2xj03i74eesn" path="res://Sprites/Очередное/настройки/настройки/фон.png" id="18_f7jkr"]
+[ext_resource type="Texture2D" uid="uid://bq0fti2wyqn4g" path="res://Sprites/Очередное/настройки/настройки/окно.png" id="19_5lupb"]
+[ext_resource type="Texture2D" uid="uid://djngofbyvcrd1" path="res://Sprites/Очередное/настройки/настройки/ползунок.png" id="20_v4u6m"]
+[ext_resource type="AudioStream" uid="uid://iwv777jqs4o1" path="res://Sprites/Очередное/музыка/Lyudvig_van_Betkhoven_-_Lunnaya_sonata_48113982.mp3" id="21_7qkvt"]
+[ext_resource type="Script" path="res://AudioNode.gd" id="22_lky0w"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_e15qs")
+
+[node name="exper" type="TextureProgressBar" parent="."]
+offset_right = 39.0
+offset_bottom = 13.0
+scale = Vector2(18.4235, 0.949513)
+texture_progress = ExtResource("1_tuicy")
+
+[node name="Pause" type="TextureButton" parent="."]
+offset_left = 656.0
+offset_top = 16.0
+offset_right = 1168.0
+offset_bottom = 528.0
+scale = Vector2(0.12895, 0.122482)
+texture_normal = ExtResource("2_jr385")
+
+[node name="MenuSpells" type="TextureRect" parent="."]
+process_mode = 2
+visible = false
+offset_right = 1080.0
+offset_bottom = 1920.0
+scale = Vector2(0.665347, 0.56145)
+texture = ExtResource("4_iw5ra")
+
+[node name="Odin" type="TextureButton" parent="MenuSpells"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 684.0
+offset_right = 866.0
+offset_bottom = 912.0
+texture_normal = ExtResource("5_kl8wp")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Dwa" type="TextureButton" parent="MenuSpells"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 1026.0
+offset_right = 865.0
+offset_bottom = 1254.0
+texture_normal = ExtResource("6_6qx7a")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="."]
+offset_left = 8.0
+offset_top = 24.0
+offset_right = 144.0
+offset_bottom = 79.0
+
+[node name="Paused" type="TextureRect" parent="."]
+process_mode = 2
+offset_right = 1080.0
+offset_bottom = 1920.0
+scale = Vector2(0.66601, 0.561996)
+texture = ExtResource("7_syjua")
+
+[node name="Odinodin" type="TextureButton" parent="Paused"]
+layout_mode = 0
+offset_left = 228.225
+offset_top = 494.666
+offset_right = 831.225
+offset_bottom = 683.666
+texture_normal = ExtResource("5_6d86w")
+texture_pressed = ExtResource("6_kd2mu")
+
+[node name="Dwadwa" type="TextureButton" parent="Paused"]
+layout_mode = 0
+offset_left = 228.225
+offset_top = 939.508
+offset_right = 831.225
+offset_bottom = 1128.51
+texture_normal = ExtResource("7_c1bn8")
+texture_pressed = ExtResource("8_aricy")
+
+[node name="ThreeBut" type="TextureButton" parent="Paused"]
+layout_mode = 0
+offset_left = 228.225
+offset_top = 715.308
+offset_right = 831.225
+offset_bottom = 904.308
+texture_normal = ExtResource("12_vlcqv")
+texture_pressed = ExtResource("13_4wo8v")
+
+[node name="GameOver" type="TextureRect" parent="."]
+process_mode = 2
+visible = false
+offset_right = 1080.0
+offset_bottom = 1920.0
+scale = Vector2(0.661755, 0.561871)
+texture = ExtResource("12_qkqk2")
+
+[node name="TextureRect" type="TextureRect" parent="GameOver"]
+layout_mode = 0
+offset_left = 324.894
+offset_top = 683.43
+offset_right = 411.894
+offset_bottom = 798.43
+texture = ExtResource("13_imbgm")
+
+[node name="TextureRect2" type="TextureRect" parent="GameOver"]
+layout_mode = 0
+offset_left = 324.894
+offset_top = 533.93
+offset_right = 417.894
+offset_bottom = 626.93
+texture = ExtResource("14_r1dpq")
+
+[node name="TextureButton" type="TextureButton" parent="GameOver"]
+layout_mode = 0
+offset_left = 250.848
+offset_top = 911.24
+offset_right = 853.848
+offset_bottom = 1100.24
+texture_normal = ExtResource("5_6d86w")
+texture_pressed = ExtResource("6_kd2mu")
+
+[node name="TextureButton2" type="TextureButton" parent="GameOver"]
+layout_mode = 0
+offset_left = 250.848
+offset_top = 1128.37
+offset_right = 853.848
+offset_bottom = 1317.37
+texture_normal = ExtResource("7_c1bn8")
+texture_pressed = ExtResource("8_aricy")
+
+[node name="Result" type="Label" parent="GameOver"]
+layout_mode = 0
+offset_left = 343.027
+offset_top = 300.781
+offset_right = 715.027
+offset_bottom = 394.781
+theme_override_colors/font_color = Color(0.643137, 0.956863, 1, 1)
+theme_override_fonts/font = ExtResource("15_qsirs")
+theme_override_font_sizes/font_size = 90
+text = "Результат"
+
+[node name="time" type="Label" parent="GameOver"]
+layout_mode = 0
+offset_left = 457.873
+offset_top = 533.93
+offset_right = 829.873
+offset_bottom = 627.93
+theme_override_colors/font_color = Color(0.643137, 0.956863, 1, 1)
+theme_override_fonts/font = ExtResource("15_qsirs")
+theme_override_font_sizes/font_size = 90
+
+[node name="kill" type="Label" parent="GameOver"]
+layout_mode = 0
+offset_left = 457.873
+offset_top = 683.431
+offset_right = 829.873
+offset_bottom = 777.431
+theme_override_colors/font_color = Color(0.643137, 0.956863, 1, 1)
+theme_override_fonts/font = ExtResource("15_qsirs")
+theme_override_font_sizes/font_size = 90
+
+[node name="Setting" type="TextureRect" parent="."]
+process_mode = 2
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.664587, 0.546581)
+texture = ExtResource("18_f7jkr")
+
+[node name="fon" type="TextureRect" parent="Setting"]
+layout_mode = 0
+offset_left = 132.413
+offset_top = 190.274
+offset_right = 1104.41
+offset_bottom = 1127.27
+scale = Vector2(0.860127, 1.17749)
+texture = ExtResource("19_5lupb")
+
+[node name="But" type="TextureButton" parent="Setting"]
+layout_mode = 0
+offset_left = 264.826
+offset_top = 936.733
+offset_right = 867.826
+offset_bottom = 1125.73
+texture_normal = ExtResource("7_c1bn8")
+texture_pressed = ExtResource("8_aricy")
+
+[node name="Label" type="Label" parent="Setting"]
+layout_mode = 0
+offset_left = 421.314
+offset_top = 248.82
+offset_right = 896.314
+offset_bottom = 342.82
+scale = Vector2(0.646988, 0.738936)
+theme_override_colors/font_color = Color(0.643137, 0.956863, 1, 1)
+theme_override_fonts/font = ExtResource("15_qsirs")
+theme_override_font_sizes/font_size = 90
+text = "Настройки"
+
+[node name="HSlider" type="HSlider" parent="Setting"]
+layout_mode = 0
+offset_left = 288.901
+offset_top = 600.094
+offset_right = 639.901
+offset_bottom = 678.094
+scale = Vector2(1.51092, 1.14103)
+theme_override_icons/grabber = ExtResource("20_v4u6m")
+theme_override_icons/grabber_highlight = ExtResource("20_v4u6m")
+min_value = -100.0
+max_value = 0.0
+
+[node name="Label2" type="Label" parent="Setting"]
+layout_mode = 0
+offset_left = 288.901
+offset_top = 508.617
+offset_right = 763.901
+offset_bottom = 602.617
+scale = Vector2(0.646988, 0.738936)
+theme_override_colors/font_color = Color(0.643137, 0.956863, 1, 1)
+theme_override_fonts/font = ExtResource("15_qsirs")
+theme_override_font_sizes/font_size = 90
+text = "Звук"
+
+[node name="Label3" type="Label" parent="Setting"]
+layout_mode = 0
+offset_left = 728.272
+offset_top = 508.617
+offset_right = 1203.27
+offset_bottom = 602.617
+scale = Vector2(0.646988, 0.738936)
+theme_override_colors/font_color = Color(0.643137, 0.956863, 1, 1)
+theme_override_fonts/font = ExtResource("15_qsirs")
+theme_override_font_sizes/font_size = 90
+text = "100"
+
+[node name="AudioNode" type="AudioStreamPlayer" parent="Setting"]
+process_mode = 3
+stream = ExtResource("21_7qkvt")
+autoplay = true
+script = ExtResource("22_lky0w")
+
+[connection signal="pressed" from="Pause" to="." method="_on_pause_pressed"]
+[connection signal="pressed" from="MenuSpells/Odin" to="." method="_on_odin_pressed"]
+[connection signal="pressed" from="MenuSpells/Dwa" to="." method="_on_dwa_pressed"]
+[connection signal="pressed" from="Paused/Odinodin" to="." method="_on_odinodin_pressed"]
+[connection signal="pressed" from="Paused/Dwadwa" to="." method="_on_dwadwa_pressed"]
+[connection signal="pressed" from="Paused/ThreeBut" to="." method="_on_three_but_pressed"]
+[connection signal="pressed" from="GameOver/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="GameOver/TextureButton2" to="." method="_on_texture_button_2_pressed"]
+[connection signal="pressed" from="Setting/But" to="." method="_on_but_pressed"]
+[connection signal="value_changed" from="Setting/HSlider" to="Setting/AudioNode" method="_on_h_slider_value_changed"]
+[connection signal="finished" from="Setting/AudioNode" to="." method="_on_audio_node_finished"]
